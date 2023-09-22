@@ -6,6 +6,7 @@ type addProps = {
   AddCssCode: string;
   AddTailwindCode: string;
   AddIsOpen: boolean;
+  btnText: string;
 };
 
 type OptionsProps = {
@@ -16,7 +17,7 @@ type OptionsProps = {
 export const Generator = {
   Options: function Options(props: React.PropsWithChildren) {
     return (
-      <div className="h-full w-1/4 flex  justify-center pt-48">
+      <div className="h-full w-1/4 flex  justify-center pt-10">
         <div className="bg-slate-50 h-fit p-5 rounded-xl flex-col flex items-center justify-center gap-1">
           {props.children}
         </div>
@@ -25,7 +26,7 @@ export const Generator = {
   },
   Main: function Main(props: React.PropsWithChildren) {
     return (
-      <div className="bg-slate-50 w-3/4 h-2/4 rounded-xl flex items-center justify-center overflow-hidden">
+      <div className="bg-slate-50 w-3/4 min-h-[400px] h-2/4 rounded-xl flex items-center justify-center overflow-hidden">
         {props.children}
       </div>
     );
@@ -33,7 +34,7 @@ export const Generator = {
   Code: function Code(props: OptionsProps) {
     const { cssCode, tailwindCode, AddIsOpen } = props;
     return (
-      <div className="flex flex-row gap-8 h-1/5 justify-start w-full pl-96">
+      <div className="flex flex-row gap-8 justify-start w-full pl-96">
         <div className="w-3/5 flex flex-col gap-3">
           <div>
             <div className="flex flex-row justify-between items-center p-3">
@@ -44,7 +45,7 @@ export const Generator = {
                     className="bg-blue-400 py-2 px-3 font-semibold hover:bg-blue-500 rounded-lg text-sm"
                     onClick={() => navigator.clipboard.writeText(cssCode)}
                   >
-                    Copy only the shadow
+                    Copy only the {props.btnText}
                   </button>
                 )}
                 <button
@@ -59,7 +60,7 @@ export const Generator = {
                 </button>
               </div>
             </div>
-            <div className="font-mono bg-white p-3">
+            <div className="font-mono bg-white p-3 break-all">
               <div>
                 {cssCode} {AddIsOpen && props.AddCssCode}
               </div>
@@ -79,7 +80,7 @@ export const Generator = {
                         navigator.clipboard.writeText(tailwindCode)
                       }
                     >
-                      Copy only the shadow
+                      Copy only the {props.btnText}
                     </button>
                   )}
                   <button
@@ -95,7 +96,7 @@ export const Generator = {
                   </button>
                 </div>
               </div>
-              <div className="font-mono bg-white p-3">
+              <div className="font-mono bg-white p-3 break-all">
                 <div>
                   {tailwindCode} {AddIsOpen && props.AddTailwindCode}
                 </div>
