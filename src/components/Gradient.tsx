@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BinIcon from "../svgIcons/bin";
 import { ColorPicker } from "./ColorPicker";
 import { Generator } from "./Generator";
 import { Slider } from "./Slider";
@@ -58,10 +59,18 @@ export function Gradient() {
               newPercentages[i] = value;
               setPercentages(newPercentages);
             }}
+            removeFn={() => {
+              const newColors = [...colors];
+              newColors.splice(i, 1);
+              setColors(newColors);
+              const newPercentages = [...percentages];
+              newPercentages.splice(i, 1);
+              setPercentages(newPercentages);
+            }}
             index={i}
           />
         ))}
-        <div className="text-lg font-semibold flex flex-col gap-2">
+        <div className="text-lg font-semibold flex flex-row gap-2">
           <button
             disabled={colors.length <= 1}
             className="bg-red-400 hover:bg-red-500 rounded-lg p-2 font-semibold
@@ -118,9 +127,11 @@ function SingleColor(props: {
   percentage: number;
   setColors: (value: string) => void;
   setPercentages: (value: number) => void;
+  removeFn: () => void;
   index: number;
 }) {
-  const { index, setColors, color, percentage, setPercentages } = props;
+  const { index, setColors, color, percentage, setPercentages, removeFn } =
+    props;
   function SetValue(e: React.ChangeEvent<HTMLInputElement>) {
     setPercentages(e.target.valueAsNumber);
   }
@@ -140,6 +151,9 @@ function SingleColor(props: {
             id={index.toString()}
             type="number"
           />
+          <button onClick={removeFn} className="ml-1">
+            <BinIcon size={16} />
+          </button>
         </div>
         <div className="flex flex-col">
           <input
