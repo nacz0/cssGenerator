@@ -29,7 +29,7 @@ export function TextStroke() {
           setFn={setStrokeColor}
           text="Stroke color"
         />
-        <div className="flex flex-row justify-between w-full">
+        <div className="flex flex-row justify-between w-full my-3">
           <label htmlFor="textOptions" className="font-semibold">
             Text Options
           </label>
@@ -49,15 +49,16 @@ export function TextStroke() {
               min={0}
               max={150}
               name="Text Size"
+              reset={64}
             />
 
-            <div className="flex flex-col font-semibold">
-              <label className="text-sm" htmlFor="text">
+            <div className="flex flex-col font-semibold w-full">
+              <label className="" htmlFor="text">
                 Text:
               </label>
               <input
                 type="text"
-                className="w-40"
+                className="w-52 border-2 border-gray-200 rounded-md p-1 mt-1"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 id="text"

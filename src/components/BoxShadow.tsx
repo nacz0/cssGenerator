@@ -35,6 +35,7 @@ export function Boxshadow() {
           min={0}
           max={300}
           name="boxSize"
+          reset={200}
         />
         <input
           type="color"
