@@ -3,6 +3,7 @@ import { Slider } from "./Slider";
 
 import { ColorPicker } from "./ColorPicker";
 import { Generator } from "./Generator";
+import { Toggle } from "./Toggle";
 
 export function TextShadow() {
   const [fontSize, setFontSize] = useState(64);
@@ -27,7 +28,7 @@ export function TextShadow() {
         <Slider
           setFn={setoffsetY}
           value={offsetY}
-          min={0}
+          min={-100}
           max={100}
           name="Offset Y"
         />
@@ -38,15 +39,12 @@ export function TextShadow() {
           setFn={setShadowColor}
           text="Text shadow color"
         />
+
         <div className="flex flex-row justify-between w-full">
           <label htmlFor="textOptions" className="font-semibold">
             Text Options
           </label>
-          <input
-            type="checkbox"
-            onChange={() => setOpenTextOptions((prev) => !prev)}
-            id="textOptions"
-          />
+          <Toggle setFn={setOpenTextOptions} value={openTextOptions} />
         </div>
 
         {openTextOptions && (
@@ -79,7 +77,7 @@ export function TextShadow() {
           </>
         )}
       </Generator.Options>
-      <div className=" flex h-full w-3/4 flex-col justify-center items-center gap-10">
+      <div className=" flex h-full w-3/4 flex-col mt-10 items-center gap-10">
         <Generator.Main>
           <div
             className=" "
@@ -99,6 +97,7 @@ export function TextShadow() {
           AddIsOpen={openTextOptions}
           AddCssCode={`color: ${textColor}; font-size: ${fontSize}px;`}
           AddTailwindCode={`text-[${textColor}] text-[${fontSize}px]`}
+          btnText="shadow"
         />
       </div>
     </div>

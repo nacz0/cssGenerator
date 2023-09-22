@@ -42,7 +42,7 @@ export function Boxshadow() {
           onChange={(e) => setColor(e.target.value)}
         />
       </Generator.Options>
-      <div className=" flex h-full w-3/4 flex-col justify-center items-center gap-10">
+      <div className=" flex h-full w-3/4 flex-col mt-10 items-center gap-10">
         <Generator.Main>
           <div
             className=" bg-blue-600"
